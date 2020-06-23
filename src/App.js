@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       // passing an empty array as it's value
       apiInfo: [],
+      effects: [],
     };
   }
 
@@ -33,6 +34,7 @@ class App extends Component {
         newState.push({
           // copy over the details that aleady existed
           ...response.data[key],
+
           // add a new property called name and use the key as its value (which represents the name of the strain)
           name: key,
         });
@@ -60,17 +62,13 @@ class App extends Component {
             // pass the component, AllStrains information from the API but assigning that info to props. name(props)=strain.name
               name={strain.name}
               race={strain.race}
-              effects={strain.effects}
-              // negative={strain.negative}
-              // positive={strain.positive}
+              medicalEffects={strain.effects.medical}
+              negativeEffects={strain.effects.negative}
+              posEffects={strain.effects.positive}
               flavorsArray={strain.flavors}
             />
 
-
           );
-
-
-
         })}
 
   
