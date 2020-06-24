@@ -57,23 +57,31 @@ header {
 }
 
 .welcome {
+  width: 40%;
+  background-color: white;
+  padding: 20px;
   position: relative;
   top: 0px;
   left: -10%;
-  width: 40%;
-  background-color: white;
 }
 
-.app {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  text-align: center; */
-} 
+.welcome h1 {
+  font-size: 50px;
+  font-weight: 300;
+}
+
+.welcome p {
+  text-transform: uppercase;
+}
+
+button {
+  width: 15%;
+}
 
 /* STRAIN INFO COMPONENT */
 .strain-card {
+  background-color: rgb(185, 202, 178);
+  border-radius: 25px;
   border: 1px solid red;
   width: 50%;
   padding: 20px;
@@ -110,3 +118,28 @@ h4 {
   justify-content: space-around
 }
 
+select {
+  box-sizing: border-box;
+  display: flex;
+  width: 30%;
+  height: 31px;
+  padding: 6px 27px 6px 6px;
+  font-size: 14px;
+  text-align: left;
+  border-radius: 3px;
+  border: 1px solid #d3d4d4;
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 21 21"><polygon points="10.5,12 7,8.5 14,8.5"/></svg>');
+  background-repeat: no-repeat;
+background-position: calc(100% - 5px) center;
+}
+
+select {
+ -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}

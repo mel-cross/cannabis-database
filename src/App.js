@@ -14,6 +14,7 @@ class App extends Component {
       isLoading: false,
       // passing an empty array as it's value
       apiInfo: [],
+      filteredApiInfo: [],
       effects: [],
       selectedEffect: undefined
       // renderedStrains: []
@@ -55,7 +56,7 @@ class App extends Component {
     const selection = event.target.value
 
     // filter apiInfo.effect.positive to only have selection 
-    const allData = this.state.apiInfo;
+    const allData = [...this.state.apiInfo];
 
     const filteredResult = allData.filter((data) => {
       return data.effects.positive.includes(selection)
@@ -64,7 +65,7 @@ class App extends Component {
     // update our apiInfo
     this.setState({
       selectedEffect: selection,
-      apiInfo: filteredResult
+      filteredApiInfo: filteredResult
     });
   }
 
@@ -107,7 +108,7 @@ class App extends Component {
 
 
           {/* take all the info from the API and map over it, making every individual item called strain */}
-          {this.state.apiInfo.slice(0, 5).map((strain) => {
+          {this.state.filteredApiInfo.slice(0, 5).map((strain) => {
             return (
               <StrainInfo
               // pass the component StrainInfo information from the API by assigning that info to props. name(props)=strain.name
