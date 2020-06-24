@@ -5,8 +5,8 @@ const Welcome = (props) => {
      <header>
        <div className="welcome wrapper">
          <h1>Releaf</h1>
-         <p>The Cannabis Strain Database</p>
-         <button onClick={props.getData}>Click</button>
+         <p>A Cannabis Strain Library</p>
+         <button onClick={props.getData}>View Strains</button>
        </div>
      </header>
    );
