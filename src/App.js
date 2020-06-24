@@ -50,14 +50,21 @@ class App extends Component {
     });
   };
 
-  // renderedStrains = (event, userSelection) => {
-  //   const userStrain = 
-  // }
 
   handleInputChange = (event) => {
     const selection = event.target.value
+
+    // filter apiInfo.effect.positive to only have selection 
+    const allData = this.state.apiInfo;
+
+    const filteredResult = allData.filter((data) => {
+      return data.effects.positive.includes(selection)
+    });
+
+    // update our apiInfo
     this.setState({
-     selectedEffect: selection
+      selectedEffect: selection,
+      apiInfo: filteredResult
     });
   }
 

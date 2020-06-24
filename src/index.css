@@ -34,25 +34,34 @@ img {
 
 /* BASE */
 body {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Lato', sans-serif;
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
 }
 
 /* HEADER */
 header {
-  background-image: url("./assets/rick-proctor-PGc9Vid8O24-unsplash.jpg");
+  background-image: url("./assets/header-image.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 50vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   text-align: center;
+}
+
+.welcome {
+  position: relative;
+  top: 0px;
+  left: -10%;
+  width: 40%;
+  background-color: white;
 }
 
 .app {
