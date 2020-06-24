@@ -87,52 +87,55 @@ class App extends Component {
     return (
       <div className="app">
         <Welcome
-        // getData represents props. Within the props of getData, give it the information from the API (all of the strains). (it knows what the APIinfo is from "this"). Now the user can click the button and it will render all the strains.
-        getData={this.getData}
+          // getData represents props. Within the props of getData, give it the information from the API (all of the strains). (it knows what the APIinfo is from "this"). Now the user can click the button and it will render all the strains.
+          getData={this.getData}
         />
+        <main>
+            {/* displays when page is loading */}
+            <div className="preloader">
+              {/* ternary operator - fancy if statement */}
+              {this.state.isLoading ? <p>loading...</p> : ""}
+            </div>
 
-        {/* ternary operator - fancy if statement */}
-        {this.state.isLoading ? (<p>Data is Loading</p>) : ''}
+          <section className="effect-select">
+            {/* user selected postive efect */}
+            {this.state.effects.length > 0 ? (
+              <select
+                onChange={this.handleInputChange}
+                value={this.state.selectedEffect}
+              >
+                <option disabled value="">Please Select An Option</option>
+                {this.state.effects.map((effect) => {
+                  return <option value={effect}>{effect}</option>;
+                })}
+              </select>
+            ) : (
+              ""
+            )}
+          </section>
 
-        {/* <EffectSelect /> */}
-        {this.state.effects.length > 0 ? (
-          <select 
-          onChange={this.handleInputChange}
-          value={this.state.selectedEffect}>
-            <option value="">Please Select An Option</option>
-            {this.state.effects.map((effect) => {
-              return (
-                <option value={effect}>{effect}</option>
-                )})}
-          </select>) : ''}
-
-          <div className="card-container">
-            {/* take all the info from the API and map over it, making every individual item called strain */}
-            {this.state.filteredApiInfo.slice(0, 5).map((strain) => {
-              return (
-                <StrainInfo
-                // pass the component StrainInfo information from the API by assigning that info to props. name(props)=strain.name
-                  name={strain.name}
-                  race={strain.race}
-                  medicalEffects={strain.effects.medical}
-                  negativeEffects={strain.effects.negative}
-                  posEffects={strain.effects.positive}
-                  flavorsArray={strain.flavors}
-                />
-              );
-            })}
-          </div>
-
-        </div>
+          <section>
+            <div className="card-container">
+              {/* take all the info from the API and map over it, making every individual item called strain */}
+              {this.state.filteredApiInfo.slice(0, 5).map((strain) => {
+                return (
+                  <StrainInfo
+                    // pass the component StrainInfo information from the API by assigning that info to props. name(props)=strain.name
+                    name={strain.name}
+                    race={strain.race}
+                    medicalEffects={strain.effects.medical}
+                    negativeEffects={strain.effects.negative}
+                    posEffects={strain.effects.positive}
+                    flavorsArray={strain.flavors}
+                  />
+                );
+              })}
+            </div>
+          </section>
+        </main>
+      </div>
     );
   }
 }
 
 export default App;
-
-// update API to return all strains but only render to the user a max of ##
-// Allow user to see data based on type - Sativa, Indica, or Hybrid
-// store the user selection in state and update the API call based on the user provided type
-// Allow user to see data based on their current symptom
-// store the user selection in state. Filter the strains based on the user selection and store the filtered results in state (filteredStrains)
-// render the filteredStrains array to the user

@@ -11,7 +11,6 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 /* STYLES */
 
 /* RESETS */
-ul,
 h1,
 h2,
 h3,
@@ -57,34 +56,102 @@ header {
 }
 
 .welcome {
-  width: 40%;
-  background-color: white;
-  padding: 20px;
   position: relative;
   top: 0px;
-  left: -10%;
+  left: -15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.welcome h1 {
+.title {
+  width: 50%;
+  background-color: white;
+  padding: 40px;
+}
+
+.title h1 {
   font-size: 50px;
   font-weight: 300;
 }
 
-.welcome p {
+.title p {
   text-transform: uppercase;
 }
 
 button {
-  width: 15%;
+  margin: 15px;
+  padding: 20px 40px;
+  background-color: white;
+  border: none;
+  text-transform: uppercase;
 }
 
+/* LOADING ANIMATION */
+.preloader {
+  width: 10%;
+  position: relative;
+  top: 115px;
+  right: -73%;
+}
+
+/* SELECT DROPDOWN */
+.effect-select {
+  background-image: url(./assets/select-image.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+select {
+  box-sizing: border-box;
+  display: flex;
+  width: 30%;
+  height: 40px;
+  padding: 6px 27px 6px 6px;
+  font-size: 14px;
+  text-align: left;
+  border-radius: 3px;
+  border: 1px solid #d3d4d4;
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 21 21"><polygon points="10.5,12 7,8.5 14,8.5"/></svg>');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 5px) center;
+  top: 40%;
+  right: -27%;
+}
+
+select {
+ -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+
 /* STRAIN INFO COMPONENT */
-.strain-card {
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   background-color: rgb(185, 202, 178);
+  padding-top: 55px;
+}
+
+.strain-card {
+  background-color: white;
   border-radius: 25px;
-  border: 1px solid red;
-  width: 50%;
+  width: 40%;
   padding: 20px;
+  margin: 25px;
 }
 
 h2 {
@@ -110,36 +177,13 @@ h4 {
 
 .name-race h3 {
   font-size: 12px;
-  padding-bottom: 5px;
+}
+
+.fa-cannabis {
+  color:#53af2d
 }
 
 .flex {
   display: flex;
   justify-content: space-around
-}
-
-select {
-  box-sizing: border-box;
-  display: flex;
-  width: 30%;
-  height: 31px;
-  padding: 6px 27px 6px 6px;
-  font-size: 14px;
-  text-align: left;
-  border-radius: 3px;
-  border: 1px solid #d3d4d4;
-  outline: 0;
-  cursor: pointer;
-  position: relative;
-  background-color: #fff;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21px" height="21px" viewBox="0 0 21 21"><polygon points="10.5,12 7,8.5 14,8.5"/></svg>');
-  background-repeat: no-repeat;
-background-position: calc(100% - 5px) center;
-}
-
-select {
- -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
 }

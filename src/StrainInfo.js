@@ -3,23 +3,21 @@ import React from 'react';
 const StrainInfo = (props) => {
 
    return (
-    <section className="cards">
       <div className="strain-card wrapper">
         <div className="name-race">
-           <h3><i class="fas fa-cannabis"></i>{props.race}</h3>
+           <h3><i class="fas fa-cannabis"></i> {props.race}</h3>
           <h2>{props.name}</h2>
-          <h3>effects:</h3>
         </div>
 
         <div className="flex">
           <div className="effects">
-            <div>
+            <div className="pos">
               <h4>positive:</h4>
               {props.posEffects.map((posEffect) => {
                 return <p>{posEffect}</p>;
                 })}
             </div>
-            <div>
+            <div className="neg">
               <h4>negative:</h4>
               {props.negativeEffects.map((negativeEffect) => {
                 return <p>{negativeEffect}</p>;
@@ -41,7 +39,6 @@ const StrainInfo = (props) => {
          </div>
         </div>
       </div>
-     </section>
    );
 }
 
