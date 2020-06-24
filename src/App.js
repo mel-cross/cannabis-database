@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Welcome from './Welcome';
+// import EffectSelect from './EffectSelect';
 import StrainInfo from './StrainInfo';
 import "./index.css";
 
@@ -49,6 +50,10 @@ class App extends Component {
     });
   };
 
+  // renderedStrains = (event, userSelection) => {
+  //   const userStrain = 
+  // }
+
   handleInputChange = (event) => {
     const selection = event.target.value
     this.setState({
@@ -72,47 +77,44 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-
+      <div className="app">
         <Welcome
-        // getData represents props. Within the props of getData, give it the information from the API (all of the strains). (it knows what the APIinfo is from "this")
-          getData={this.getData}
+        // getData represents props. Within the props of getData, give it the information from the API (all of the strains). (it knows what the APIinfo is from "this"). Now the user can click the button and it will render all the strains.
+        getData={this.getData}
         />
 
         {/* ternary operator - fancy if statement */}
         {this.state.isLoading ? (<p>Data is Loading</p>) : ''}
 
+        {/* <EffectSelect /> */}
         {this.state.effects.length > 0 ? (
           <select 
-            onChange={this.handleInputChange}
-            value={this.state.selectedEffect}>
+          onChange={this.handleInputChange}
+          value={this.state.selectedEffect}>
+            <option value="">Please Select An Option</option>
             {this.state.effects.map((effect) => {
-            return (
-              <option value={effect}>{effect}</option>
-            )})}
+              return (
+                <option value={effect}>{effect}</option>
+                )})}
           </select>) : ''}
 
-        {/* take all the info from the API and map over it, making every individual item called strain */}
-        {this.state.apiInfo.slice(0, 5).map((strain) => {
-          return (
-            <StrainInfo
-            // pass the component, AllStrains information from the API but assigning that info to props. name(props)=strain.name
-              name={strain.name}
-              race={strain.race}
-              medicalEffects={strain.effects.medical}
-              negativeEffects={strain.effects.negative}
-              posEffects={strain.effects.positive}
-              flavorsArray={strain.flavors}
-            />
-          );
-        })}
-  
-        {/* This CODE will take out the first 5 results and only show those. You can update 5 to represent how many items you want to show the user */}
-        {/* {this.state.apiInfo.slice(0, 5).map((strain) => {
-          return <h2>{strain.name}</h2>
-        })} */}
 
-      </div>
+          {/* take all the info from the API and map over it, making every individual item called strain */}
+          {this.state.apiInfo.slice(0, 5).map((strain) => {
+            return (
+              <StrainInfo
+              // pass the component StrainInfo information from the API by assigning that info to props. name(props)=strain.name
+                name={strain.name}
+                race={strain.race}
+                medicalEffects={strain.effects.medical}
+                negativeEffects={strain.effects.negative}
+                posEffects={strain.effects.positive}
+                flavorsArray={strain.flavors}
+              />
+            );
+          })}
+
+        </div>
     );
   }
 }
