@@ -147,11 +147,18 @@ select {
 }
 
 .strain-card {
-  background-color: white;
+  background-color: #4d714c;
   border-radius: 25px;
   width: 40%;
-  padding: 20px;
   margin: 25px;
+  padding: 50px 0 0 0;
+  height: 100%;
+}
+
+.name-race {
+text-align: center;
+margin-bottom: 30px;
+color: wheat;
 }
 
 h2 {
@@ -163,16 +170,28 @@ h3 {
   text-transform: uppercase;
 }
 
+.strain-info {
+  border-radius: 0px 0px 25px 25px;
+  background-color: white;
+}
+
 h4 {
   padding: 5px 0;
   font-size: 15px;
   text-transform: uppercase;
 }
 
-.name-race, .effects, .flav-med {
-  padding: 5px 0;
+.info {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.info h4 {
+  display: block;
+}
+
+.name-race {
+  padding-left: 25px;
 }
 
 .name-race h3 {
@@ -186,4 +205,17 @@ h4 {
 .flex {
   display: flex;
   justify-content: space-around
+}
+
+.move {
+  position: fixed;
+  right: 0;
+  bottom: 10px;
+  background: transparent;
+  font-size: 30px;
+}
+
+.move:hover {
+  transition: ease-in-out .2s;
+  transform: scale(1.2);
 }

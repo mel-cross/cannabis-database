@@ -6,7 +6,6 @@ import StrainInfo from './StrainInfo';
 import "./index.css";
 
 class App extends Component {
-
   constructor() {
     super();
     // providing initial state
@@ -16,9 +15,11 @@ class App extends Component {
       apiInfo: [],
       filteredApiInfo: [],
       effects: [],
-      selectedEffect: undefined
+      selectedEffect: undefined,
       // renderedStrains: []
     };
+    this.scrollContent = React.createRef();
+    this.scrollTop = React.createRef();
   }
 
   saveResponse = (response) => {
@@ -34,7 +35,7 @@ class App extends Component {
         // add a new property called name and use the key as its value (which represents the name of the strain)
         name: key,
       });
-      positiveEffects.push(response.data[key].effects.positive)
+      positiveEffects.push(response.data[key].effects.positive);
     }
 
     // flat removes the arrays inside of an array and makes it one array
@@ -51,36 +52,51 @@ class App extends Component {
     });
   };
 
-
   handleInputChange = (event) => {
-    const selection = event.target.value
+    const selection = event.target.value;
 
-    // filter apiInfo.effect.positive to only have selection 
+    // filter apiInfo.effect.positive to only have selection
     const allData = [...this.state.apiInfo];
 
     const filteredResult = allData.filter((data) => {
-      return data.effects.positive.includes(selection)
+      return data.effects.positive.includes(selection);
     });
 
     // update our apiInfo
     this.setState({
       selectedEffect: selection,
-      filteredApiInfo: filteredResult
+      filteredApiInfo: filteredResult,
     });
-  }
+
+    this.scrollDream();
+  };
+
+  // scroll function, credit: hector
+  scrollDream = () => {
+    window.scrollTo(0, this.scrollContent.current.offsetTop);
+  };
+
+  // Function to scroll to top of the page on refresh
+  scrollToTop = () => {
+    window.scrollTo(0, this.scrollTop.current.offsetTop);
+  };
+
+  handleRefresh = (event) => {
+    event.preventDefault();
+    this.scrollToTop();
+  };
 
   getData = () => {
     this.setState({
       isLoading: true,
     });
-    
+
     // calling the API with axios
     axios({
       url: "https://strainapi.evanbusse.com/qAtccGm/strains/search/all",
       method: "GET",
       responseType: "json",
     }).then(this.saveResponse);
-
   };
 
   render() {
@@ -91,20 +107,22 @@ class App extends Component {
           getData={this.getData}
         />
         <main>
-            {/* displays when page is loading */}
-            <div className="preloader">
-              {/* ternary operator - fancy if statement */}
-              {this.state.isLoading ? <p>loading...</p> : ""}
-            </div>
+          {/* displays when page is loading */}
+          <div className="preloader">
+            {/* ternary operator - fancy if statement */}
+            {this.state.isLoading ? <p>loading...</p> : ""}
+          </div>
 
-          <section className="effect-select">
+          <section className="effect-select" ref={this.scrollContent}>
             {/* user selected postive efect */}
             {this.state.effects.length > 0 ? (
               <select
                 onChange={this.handleInputChange}
                 value={this.state.selectedEffect}
               >
-                <option disabled value="">Please Select An Option</option>
+                <option disabled value="">
+                  Please Select An Option
+                </option>
                 {this.state.effects.map((effect) => {
                   return <option value={effect}>{effect}</option>;
                 })}
@@ -115,7 +133,7 @@ class App extends Component {
           </section>
 
           <section>
-            <div className="card-container">
+            <div className="card-container" ref={this.scrollTop}>
               {/* take all the info from the API and map over it, making every individual item called strain */}
               {this.state.filteredApiInfo.slice(0, 5).map((strain) => {
                 return (
@@ -131,6 +149,9 @@ class App extends Component {
                 );
               })}
             </div>
+            <button className="move" onClick={this.handleRefresh}>
+              <i class="fas fa-chevron-up"></i>
+            </button>
           </section>
         </main>
       </div>
