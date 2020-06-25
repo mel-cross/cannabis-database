@@ -10,7 +10,7 @@ const Welcome = (props) => {
              <p>A Cannabis Strain Library</p>
            </div>
            <button onClick={props.getData} >
-             Click to start
+             Click to Explore
            </button>
          </div>
        </div>

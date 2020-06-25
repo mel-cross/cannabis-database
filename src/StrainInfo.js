@@ -14,13 +14,13 @@ const StrainInfo = (props) => {
          <div className="info">
            <h4>positive:</h4>
            {props.posEffects.map((posEffect) => {
-             return <p>{posEffect}</p>;
+           return <p> {posEffect }, </p>;
            })}
          </div>
          <div className="info">
            <h4>negative:</h4>
            {props.negativeEffects.map((negativeEffect) => {
-             return <p>{negativeEffect}</p>;
+             return <p> {negativeEffect}, </p>;
            })}
          </div>
 
@@ -28,13 +28,13 @@ const StrainInfo = (props) => {
          <div className="info">
            <h4>flavours:</h4>
            {props.flavorsArray.map((flavor) => {
-             return <p>{flavor}</p>;
+             return <p>{flavor}, </p>;
            })}
          </div>
          <div className="info">
            <h4>Can help with:</h4>
            {props.medicalEffects.map((medicalEffect) => {
-             return <p>{medicalEffect}</p>;
+             return <p>{medicalEffect}, </p>;
            })}
          </div>
        </div>
