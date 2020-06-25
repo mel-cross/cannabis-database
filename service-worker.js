@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/melissa-ahlstrom-project-five/precache-manifest.947c839b8762c69741b7939b0d7717a4.js"
+  "/melissa-ahlstrom-project-five/precache-manifest.0f73d1ecc173298672f6d0d69154f6ec.js"
 );
 
 self.addEventListener('message', (event) => {
