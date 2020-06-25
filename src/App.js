@@ -116,17 +116,18 @@ class App extends Component {
         />
         <main>
           {/* displays when page is loading */}
-          <div className="preloader">
+          <div className="preloader" ref={this.scrollTop}>
             {/* ternary operator - fancy if statement */}
-            {this.state.isLoading ? <p>loading...</p> : ""}
+            {this.state.isLoading ? <span>loading...</span> : ""}
           </div>
 
-          <section className="effect-select" ref={this.scrollContent}>
+          <section className="effect-select">
             {/* user selected postive efect */}
             {this.state.effects.length > 0 ? (
               <select
                 onChange={this.handleInputChange}
                 value={this.state.selectedEffect}
+                ref={this.scrollContent}
               >
                 <option disabled value="">
                   Please Select An Option
@@ -141,7 +142,7 @@ class App extends Component {
           </section>
 
           <section>
-            <div className="card-container" ref={this.scrollTop}>
+            <div className="card-container">
               {/* take all the info from the API and map over it, making every individual item called strain */}
               {this.state.filteredApiInfo.map((strain) => {
                 return (
@@ -157,7 +158,9 @@ class App extends Component {
                 );
               })}
             </div>
-            <button className="move" onClick={this.handleRefresh}><i class="fas fa-chevron-up"></i></button>
+            <button className="move" onClick={this.handleRefresh}>
+              <i class="fas fa-chevron-up"></i>
+            </button>
           </section>
         </main>
       </div>
