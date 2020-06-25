@@ -22,6 +22,7 @@ class App extends Component {
     this.scrollTop = React.createRef();
   }
 
+
   saveResponse = (response) => {
     // create a new empty array
     let strains = [];
@@ -38,6 +39,7 @@ class App extends Component {
       positiveEffects.push(response.data[key].effects.positive);
     }
 
+
     // flat removes the arrays inside of an array and makes it one array
     const flattenedEffects = positiveEffects.flat();
     // ...new Set gets rid of duplicates
@@ -51,6 +53,7 @@ class App extends Component {
       // renderedStrains: []
     });
   };
+
 
   handleInputChange = (event) => {
     const selection = event.target.value;
@@ -71,12 +74,13 @@ class App extends Component {
     this.scrollDream();
   };
 
+
+
   // scroll function, credit: hector
   scrollDream = () => {
     window.scrollTo(0, this.scrollContent.current.offsetTop);
   };
 
-  // Function to scroll to top of the page on refresh
   scrollToTop = () => {
     window.scrollTo(0, this.scrollTop.current.offsetTop);
   };
@@ -85,6 +89,8 @@ class App extends Component {
     event.preventDefault();
     this.scrollToTop();
   };
+
+
 
   getData = () => {
     this.setState({
@@ -98,6 +104,8 @@ class App extends Component {
       responseType: "json",
     }).then(this.saveResponse);
   };
+
+
 
   render() {
     return (
@@ -135,7 +143,7 @@ class App extends Component {
           <section>
             <div className="card-container" ref={this.scrollTop}>
               {/* take all the info from the API and map over it, making every individual item called strain */}
-              {this.state.filteredApiInfo.slice(0, 5).map((strain) => {
+              {this.state.filteredApiInfo.map((strain) => {
                 return (
                   <StrainInfo
                     // pass the component StrainInfo information from the API by assigning that info to props. name(props)=strain.name
@@ -149,9 +157,7 @@ class App extends Component {
                 );
               })}
             </div>
-            <button className="move" onClick={this.handleRefresh}>
-              <i class="fas fa-chevron-up"></i>
-            </button>
+            <button className="move" onClick={this.handleRefresh}><i class="fas fa-chevron-up"></i></button>
           </section>
         </main>
       </div>

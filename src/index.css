@@ -41,6 +41,10 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
 }
 
+button:focus, select:focus {
+  border: 4px dotted darkgreen;
+}
+
 /* HEADER */
 header {
   background-image: url("./assets/header-image.png");
@@ -62,6 +66,10 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.welcome button {
+  cursor: wait;
 }
 
 .title {
@@ -107,6 +115,7 @@ button {
   justify-content: center;
 }
 
+/* select menu credit: https://codepen.io/souporserious/pen/vGRZQL */
 select {
   box-sizing: border-box;
   display: flex;
@@ -153,12 +162,18 @@ select {
   margin: 25px;
   padding: 50px 0 0 0;
   height: 100%;
+  transition: all .2s ease-in-out;
+}
+
+.strain-card:hover {
+  box-shadow: 0px 2px 27px 6px rgba(0,0,0,0.57);
+      transform: scale(1.02);
 }
 
 .name-race {
 text-align: center;
 margin-bottom: 30px;
-color: wheat;
+color: white;
 }
 
 .name-race h3 {
@@ -219,4 +234,48 @@ h4 {
 .move:hover {
   transition: ease-in-out .2s;
   transform: scale(1.2);
+}
+
+
+/* MEDIA QUERIES */
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 720px) {
+  .card-container {
+    flex-direction: column;
+  }
+
+  .strain-card {
+    width: 65%;
+  }
+
+  button {
+    padding: 3% 4%;
+    font-size: 2.2vw;
+  }
+}
+
+
+@media (max-width: 675px) {
+  .welcome {
+    position: revert;
+  }
+
+  .title {
+    width: 60%;
+  }
+
+  .title h1 {
+    font-size: 7vw;
+  }
+
+  .title p {
+    font-size: 2.3vw;
+  }
+
+  select {
+    width: 50%;
+    height: 60px;
+    right: 0;
+  }
 }
